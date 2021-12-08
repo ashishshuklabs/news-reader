@@ -24,6 +24,7 @@ const StyledBlock = styled.article`
   display: flex;
   flex-direction: column;
   border: 1px solid ${designVariables.palette.dark700};
+  overflow: hidden;
   .title-container {
     width: 100%;
     background: ${designVariables.palette.dark400};
@@ -50,5 +51,6 @@ const StyledBlock = styled.article`
   }
   .content {
     padding: 1rem;
+    /* text-overflow: clip; */
   }
 `;
