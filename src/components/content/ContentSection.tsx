@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
 import {
@@ -47,6 +47,7 @@ export const ContentSection = () => {
     setInput(text);
     text.trim().length === 0 ? setDisabled(true) : setDisabled(false);
   };
+
   //building key out of title and description. Apparantly, just the title is not unique.
   return (
     <Container>
@@ -55,6 +56,7 @@ export const ContentSection = () => {
           <div className="search-section">
             <div className="search-button expand">
               <OutlinedButton
+                // ref={buttonRef}
                 color={designVariables.palette.dark400}
                 disabled={disabled}
                 disabledColor={designVariables.palette.light300}
@@ -130,9 +132,11 @@ const Container = styled.section`
         @media (max-width: 47rem) {
           flex-direction: column;
           margin-bottom: 1rem;
+          width: 100%;
           .search-field.expand {
             width: 100%;
             margin-bottom: 1rem;
+            margin-right: 0;
           }
           .search-button.expand {
             width: 100%;

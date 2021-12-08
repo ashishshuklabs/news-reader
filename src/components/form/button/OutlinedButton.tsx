@@ -10,6 +10,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent) => void;
   disabledColor?: string;
   disabled: boolean;
+  ref?: React.RefObject<HTMLButtonElement>;
 }
 export const OutlinedButton = (props: ButtonProps) => {
   const handleClick = (e: React.MouseEvent) => {
@@ -19,6 +20,7 @@ export const OutlinedButton = (props: ButtonProps) => {
   };
   return (
     <StyledButton
+      ref={props.ref}
       onClick={handleClick}
       buttonStyle={props.buttonStyle}
       color={props.color}

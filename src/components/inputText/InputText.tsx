@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { useDebounce } from "../../hooks/useDebounce";
 import { designVariables } from "../../styles/globalVariables";
@@ -17,6 +17,7 @@ export const InputText = (props: {
       props.onChange(debouncedValue);
     }
   }, [debouncedValue]);
+
   return (
     <StyledFilterSection style={props.style}>
       {/* <div className="input-container"> */}
