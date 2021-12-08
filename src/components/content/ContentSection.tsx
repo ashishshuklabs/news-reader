@@ -41,33 +41,42 @@ export const ContentSection = () => {
     } else {
       setData(data);
     }
-    // setLoading(false);
+    setDisabled(true);
   };
   const handleInput = (text: string) => {
     setInput(text);
     text.trim().length === 0 ? setDisabled(true) : setDisabled(false);
-    // text.trim().length > 0 ? setLoading(true) : setLoading(false);
   };
   //building key out of title and description. Apparantly, just the title is not unique.
   return (
     <Container>
-      <div className="search-news">
-        <div className="search-button">
-          <OutlinedButton
-            color={designVariables.palette.dark400}
-            disabled={disabled}
-            disabledColor={designVariables.palette.light300}
-            hoverColor={designVariables.palette.dark300}
-            title="search"
-            onClick={handleSearch}
-          />
+      <div className="user-input">
+        <div className="search-filter-container">
+          <div className="search-section">
+            <div className="search-button expand">
+              <OutlinedButton
+                color={designVariables.palette.dark400}
+                disabled={disabled}
+                disabledColor={designVariables.palette.light300}
+                hoverColor={designVariables.palette.dark300}
+                title="search"
+                onClick={handleSearch}
+              />
+            </div>
+            <div className="search-field expand">
+              <InputText
+                onChange={handleInput}
+                placeHolder="enter search phrase"
+              />
+            </div>
+          </div>
+          <div className="filter-section expand">
+            <InputText
+              onChange={handleFilter}
+              placeHolder="filter by source..."
+            />
+          </div>
         </div>
-        <div className="text-field">
-          <InputText onChange={handleInput} placeHolder="enter search phrase" />
-        </div>
-      </div>
-      <div className="text-field">
-        <InputText onChange={handleFilter} placeHolder="filter by source..." />
       </div>
       <div className="returned-results">
         <span className="text">articles found:</span>
@@ -97,22 +106,50 @@ const Container = styled.section`
   background-color: ${designVariables.colorBodyBg};
   display: flex;
   flex-direction: column;
-  .text-field {
-    width: 10rem;
-    margin-right: 4rem;
-    margin-left: 10%;
-  }
-  .search-news {
+
+  .user-input {
     display: flex;
     align-items: baseline;
     justify-content: flex-start;
-    .text-field {
-      width: 10rem;
-      margin-right: 4rem;
-    }
-    .search-button {
-      order: 2;
-      width: 10rem;
+    margin: 1rem 0;
+    .search-filter-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 1rem 10%;
+      @media (max-width: 47rem) {
+        flex-direction: column;
+        .filter-section.expand {
+          width: 100%;
+        }
+      }
+      .search-section {
+        display: flex;
+        align-items: baseline;
+        margin-right: 1rem;
+        @media (max-width: 47rem) {
+          flex-direction: column;
+          margin-bottom: 1rem;
+          .search-field.expand {
+            width: 100%;
+            margin-bottom: 1rem;
+          }
+          .search-button.expand {
+            width: 100%;
+          }
+        }
+        .search-field {
+          width: 50%;
+          margin-right: 2rem;
+        }
+        .search-button {
+          order: 2;
+          width: 30%;
+        }
+      }
+      .filter-section {
+        width: 10rem;
+      }
     }
   }
   .returned-results {

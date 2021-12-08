@@ -26,7 +26,7 @@ const StyledHeader = styled.header`
     margin-bottom: 0;
     line-height: 1;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 47rem) {
     .title {
       font-size: 2rem;
     }

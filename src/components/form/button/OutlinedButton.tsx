@@ -50,8 +50,4 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:disabled {
     background: ${(props) => props.disabledColor || props.color};
   }
-  @media (max-width: 991px) {
-    align-self: flex-start;
-    width: 80%;
-  }
 `;

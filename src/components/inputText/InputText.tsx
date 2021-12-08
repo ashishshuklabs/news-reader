@@ -44,7 +44,6 @@ const StyledFilterSection = styled.article<{ style?: CSSProperties }>`
   .input-text {
     width: 100%;
     height: 1rem;
-    margin: 2rem 0;
     background: transparent;
     border: 0;
     outline: 0;
