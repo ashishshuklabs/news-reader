@@ -35,7 +35,6 @@ export const colors: Colors = {
 } as const;
 
 export default createGlobalStyle`
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap);
  :root {
   --color-navbar-bg:${colors.light100};
   --color-body-bg:${colors.light100};
