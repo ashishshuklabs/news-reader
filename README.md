@@ -1,9 +1,21 @@
 # News Reader App
+
 #### React
+
 #### Styled Components
+
 #### vitejs
+
 #### typescript
+
 #### html/css
+
 #### axios
-#### completely responsive
+
+#### responsive
+
 #### custom hooks
+
+## To run the app
+
+yarn dev

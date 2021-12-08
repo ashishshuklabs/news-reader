@@ -8,7 +8,7 @@ export const Filter = (props: {
   placeHolder: string;
 }) => {
   const [value, setValue] = useState("");
-  //debounce input before passing to callback
+  //debounce input before passing to callback. Let the user jam as much needed and let 200ms pass before we do anything with the input.
   const { debouncedValue } = useDebounce(value);
   //return the debounced value to parent for processing
   useEffect(() => {
