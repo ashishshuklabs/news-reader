@@ -5,17 +5,21 @@ const config = () => {
     apiKey: "96e7efbae84544aca2e40f5834bf2777",
   };
 };
-export const fetchNews = async (topic: string) => {
+type Err = string;
+export const fetchNews = async <T>(topic: string): Promise<T | Err> => {
   const configs: AxiosRequestConfig = {
     params: {
       apiKey: config().apiKey,
-      q:topic
+      q: topic,
     },
   };
 
-  const response = await axios.get(
-    `${config().baseUrl}/everything`,
-    configs
-  );
-  return response.data;
+  try {
+    const response = await axios.get(`${config().baseUrl}/everything`, configs);
+    return response.data;
+  } catch (error) {
+    return axios.isAxiosError(error)
+      ? error.message
+      : "unknown error occured on fetching data";
+  }
 };
