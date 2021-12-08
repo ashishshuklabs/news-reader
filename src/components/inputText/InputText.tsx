@@ -35,12 +35,6 @@ export const InputText = (props: {
 };
 
 const StyledFilterSection = styled.article<{ style?: CSSProperties }>`
-  /* width: 100%;
-  height: 1rem;
-  margin: 2rem 0; */
-  /* .input-container { */
-  /* width: 20%;
-    margin: 0 10%; */
   .input-text {
     width: 100%;
     height: 1rem;
@@ -53,14 +47,14 @@ const StyledFilterSection = styled.article<{ style?: CSSProperties }>`
     transition: ${designVariables.transition};
     &:focus,
     &:hover {
-      background: ${designVariables.palette.light300};
+      /* background: ${designVariables.palette.light300}; */
       border-bottom: 1px solid ${designVariables.palette.blue800};
       &::placeholder {
         opacity: 0.3;
       }
     }
     &::placeholder {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: ${designVariables.palette.dark300};
       font-style: italic;
       text-transform: capitalize;
@@ -68,5 +62,4 @@ const StyledFilterSection = styled.article<{ style?: CSSProperties }>`
     }
   }
   ${(props) => props.style && { ...props.style }};
-  /* } */
 `;

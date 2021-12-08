@@ -125,7 +125,7 @@ const Container = styled.section`
       }
       .search-section {
         display: flex;
-        align-items: baseline;
+        align-items: flex-end;
         margin-right: 1rem;
         @media (max-width: 47rem) {
           flex-direction: column;
