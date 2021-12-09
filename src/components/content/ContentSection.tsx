@@ -14,6 +14,9 @@ import { InputText } from "../inputText/InputText";
 
 export const ContentSection = () => {
   const [input, setInput] = React.useState("bitcoin");
+  const [filterInput, setFilterInput] = useState<string | null>("");
+  const [searchInput, setSearchInput] = useState<string | null>("");
+
   const { loading, data, error, setError, setData, setLoading } =
     useFetch(input);
   const [disabled, setDisabled] = useState(true);
@@ -33,19 +36,23 @@ export const ContentSection = () => {
     setFilteredArticles(
       filterText ? getFilteredArticles(data, filterText) : data.articles
     );
+    setFilterInput(filterText);
   };
   const handleSearch = async () => {
+    setDisabled(true);
     const data = await fetchNews<NewsData>(input);
     if (typeof data === "string") {
       setError(data);
     } else {
       setData(data);
     }
-    setDisabled(true);
+    setFilterInput(null);
+    setSearchInput(null);
   };
-  const handleInput = (text: string) => {
+  const handleSearchInput = (text: string) => {
     setInput(text);
     text.trim().length === 0 ? setDisabled(true) : setDisabled(false);
+    setSearchInput(text);
   };
 
   //building key out of title and description. Apparantly, just the title is not unique.
@@ -56,7 +63,6 @@ export const ContentSection = () => {
           <div className="search-section">
             <div className="search-button expand">
               <OutlinedButton
-                // ref={buttonRef}
                 color={designVariables.palette.dark400}
                 disabled={disabled}
                 disabledColor={designVariables.palette.light300}
@@ -67,13 +73,15 @@ export const ContentSection = () => {
             </div>
             <div className="search-field expand">
               <InputText
-                onChange={handleInput}
+                inputValue={searchInput}
+                onChange={handleSearchInput}
                 placeHolder="enter search phrase"
               />
             </div>
           </div>
           <div className="filter-section expand">
             <InputText
+              inputValue={filterInput}
               onChange={handleFilter}
               placeHolder="filter by source..."
             />

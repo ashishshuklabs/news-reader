@@ -7,8 +7,16 @@ export const InputText = (props: {
   onChange: (filterText: string) => void;
   placeHolder: string;
   style?: CSSProperties;
+  inputValue?: string|null;
 }) => {
   const [value, setValue] = useState("");
+  //allow consumer to change value
+  useEffect(() => {
+    if (props.inputValue !== undefined) {
+      if(props.inputValue === null)
+      setValue("");
+    }
+  }, [props.inputValue]);
   //debounce input before passing to callback. Let the user jam as much needed and let 200ms pass before we do anything with the input.
   const { debouncedValue } = useDebounce(value);
   //return the debounced value to parent for processing
