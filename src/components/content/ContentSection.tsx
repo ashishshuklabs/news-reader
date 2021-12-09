@@ -139,11 +139,11 @@ const Container = styled.section`
         margin-right: 1rem;
         @media (max-width: 47rem) {
           flex-direction: column;
-          margin-bottom: 1rem;
+          margin-bottom: 2rem;
           width: 100%;
           .search-field.expand {
             width: 100%;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             margin-right: 0;
           }
           .search-button.expand {
