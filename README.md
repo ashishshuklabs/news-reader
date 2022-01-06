@@ -14,7 +14,7 @@
 
 #### responsive
 
-#### custom hooks
+#### custom hooks - for debounced input and for fetching data.
 
 ## To run the app
 
